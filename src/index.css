@@ -1,0 +1,77 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", sans-serif;
+  
+  --color-onix-gold: #F5B800;
+  --color-onix-orange: #FF6A00;
+  --color-onix-dark: #0B0B0B;
+  --color-onix-black: #050505;
+  --color-onix-gray: #1A1A1A;
+
+  @keyframes shine {
+    from { left: -100%; }
+    to { left: 100%; }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(245, 184, 0, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(245, 184, 0, 0.8); }
+  }
+  @keyframes vibrate {
+    0% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+    100% { transform: translate(0); }
+  }
+  @keyframes gradient-move {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
+
+body {
+  @apply bg-onix-dark text-white font-sans antialiased scroll-smooth overflow-x-hidden;
+}
+
+h1, h2, h3, h4 {
+  @apply font-display font-bold tracking-tight;
+}
+
+.bg-animated-gradient {
+  background: linear-gradient(-45deg, #0B0B0B, #1A1A1A, #0B0B0B, #050505);
+  background-size: 400% 400%;
+  animation: gradient-move 15s ease infinite;
+}
+
+.btn-shine {
+  @apply relative overflow-hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  @apply absolute top-0 -left-full w-1/2 h-full;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+  transform: skewX(-25deg);
+  animation: shine 3s infinite;
+}
+
+.glow-gold {
+  filter: drop-shadow(0 0 10px rgba(245, 184, 0, 0.3));
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.vibrate-hover:hover {
+  animation: vibrate 0.3s linear infinite;
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-md border border-white/10;
+}
